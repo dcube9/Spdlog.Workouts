@@ -11,7 +11,7 @@
 using namespace std;
 namespace fs = std::experimental::filesystem;
 
-fs::path IA_App_Path(void)
+fs::path App_Path(void)
 {
 	fs::path ret = ".\\";
 	char exePath[2048];
@@ -25,9 +25,9 @@ fs::path IA_App_Path(void)
 	return ret;
 }
 
-std::string IA_Log_FilePath(const char* filename)
+std::string Log_FilePath(const char* filename)
 {
-	return IA_App_Path().append("logs").append(filename).string();
+	return App_Path().append("logs").append(filename).string();
 }
 
 #include "spdlog/sinks/basic_file_sink.h"		// support for basic file logging
@@ -52,14 +52,14 @@ static std::shared_ptr<spdlog::logger> GetLogger()
 	switch (logMode)
 	{
 	case 0:
-		logger = spdlog::basic_logger_mt("basic_logger", IA_Log_FilePath("basic_logger_mt.log"));
+		logger = spdlog::basic_logger_mt("basic_logger", Log_FilePath("basic_logger_mt.log"));
 		break;
 
 	case 1:
 		{
 			std::vector<spdlog::sink_ptr> mySinks;
 			mySinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-			mySinks.push_back(std::make_shared<spdlog::sinks::daily_file_sink_mt>(IA_Log_FilePath("logfile.log"), 23, 59));
+			mySinks.push_back(std::make_shared<spdlog::sinks::daily_file_sink_mt>(Log_FilePath("logfile.log"), 23, 59));
 			logger.reset(new spdlog::logger("", std::begin(mySinks), std::end(mySinks)));
 		}
 		break;

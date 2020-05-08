@@ -11,7 +11,7 @@
 using namespace std;
 namespace fs = std::experimental::filesystem;
 
-fs::path IA_App_Path(void)
+fs::path App_Path(void)
 {
 	fs::path ret = ".\\";
 	char exePath[2048];
@@ -25,7 +25,7 @@ fs::path IA_App_Path(void)
 	return ret;
 }
 
-std::string IA_Log_FilePath(const char* filename)
+std::string Log_FilePath(const char* filename)
 {
-	return IA_App_Path().append("logs").append(filename).string();
+	return App_Path().append("logs").append(filename).string();
 }

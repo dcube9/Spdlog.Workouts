@@ -3,5 +3,5 @@
 #include <filesystem>
 namespace fs = std::experimental::filesystem;
 
-fs::path IA_App_Path(void);
-std::string IA_Log_FilePath(const char* filename);
+fs::path App_Path(void);
+std::string Log_FilePath(const char* filename);
