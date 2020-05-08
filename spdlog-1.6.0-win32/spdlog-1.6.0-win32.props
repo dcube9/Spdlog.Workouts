@@ -4,7 +4,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <IncludePath>$(SolutionDir)spdlog-1.6.0-win32\include;$(IncludePath)</IncludePath>
-    <_PropertySheetDisplayName>spdlog 1.6.0</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>spdlog 1.6.0 lib win32</_PropertySheetDisplayName>
     <LibraryPath>$(SolutionDir)spdlog-1.6.0-win32\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
