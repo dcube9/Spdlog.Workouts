@@ -12,7 +12,7 @@ This repository uses the following external dependencies directly:
 
 ## Platforms
 * Windows
- * Visual studio 2015 Update 3
- * Toolset 140
- * Wind32
- * Multi-Bytes Character Set
+    * Visual studio 2015 Update 3
+    * Toolset 140
+    * Wind32
+    * Multi-Bytes Character Set
