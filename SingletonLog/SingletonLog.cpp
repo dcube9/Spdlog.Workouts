@@ -14,7 +14,8 @@ namespace fs = std::experimental::filesystem;
 fs::path App_Path(void)
 {
 	fs::path ret = ".\\";
-	char exePath[2048];
+	char exePath[2048 + 1];
+
 
 	if ((GetModuleFileName(NULL, exePath, 2048) != 0))
 	{
