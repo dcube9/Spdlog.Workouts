@@ -10,6 +10,7 @@
 #define SINGLETONLOG_API __declspec(dllimport)
 #endif
 
+#include "version.h"
 #include "spdlog/spdlog.h"
 
 SINGLETONLOG_API spdlog::logger& GetIstanceLog();

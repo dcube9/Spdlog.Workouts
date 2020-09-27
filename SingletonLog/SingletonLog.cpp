@@ -89,7 +89,7 @@ static std::shared_ptr<spdlog::logger> GetAndInitLogger()
 {
 	std::shared_ptr<spdlog::logger> mainLog = GetLoggerFromConfig();
 
-	mainLog->info("Welcome to SingletonLog base on spdlog version {}.{}.{}  !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
+	mainLog->info("Welcome to SingletonLog {}.{}.{}  !", SINGLETONLOG_VER_MAJOR, SINGLETONLOG_VER_MINOR, SINGLETONLOG_VER_PATCH);
 
 	return mainLog;
 }
