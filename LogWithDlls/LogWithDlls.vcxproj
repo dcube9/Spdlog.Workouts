@@ -37,10 +37,12 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\fmt\7.0.3\fmt-7.0.3-win32.props" />
     <Import Project="..\spdlog\1.8.0\spdlog-1.8.0-win32.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\fmt\7.0.3\fmt-7.0.3-win32.props" />
     <Import Project="..\spdlog\1.8.0\spdlog-1.8.0-win32.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -61,6 +63,12 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>@echo off
+echo "Copia file di supporto ..."
+copy /y /d "$(ProjectDir)SingletonLog.config" "$(SolutionDir)$(ConfigurationName)\SingletonLog.config"</Command>
+      <Message>Copia file di supporto ...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -77,6 +85,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>@echo off
+echo "Copia file di supporto ..."
+copy /y /d "$(ProjectDir)SingletonLog.config" "$(SolutionDir)$(ConfigurationName)\SingletonLog.config"</Command>
+      <Message>Copia file di supporto ...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -103,6 +117,11 @@
     <ProjectReference Include="..\SingletonLog\SingletonLog.vcxproj">
       <Project>{1c0031f9-9be3-47c5-af42-e746607dacbc}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SingletonLog.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

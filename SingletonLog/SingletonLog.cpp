@@ -37,8 +37,13 @@ std::string Log_FilePath(const char* filename)
 //
 #include "spdlog/sinks/stdout_color_sinks.h"	// or "../stdout_sinks.h" if no colors needed
 #include "spdlog/sinks/stdout_sinks.h"
+//
+#include "spdlog_setup/conf.h"
 
-static std::shared_ptr<spdlog::logger> GetLogger()
+//
+using namespace spdlog_setup;
+
+static std::shared_ptr<spdlog::logger> GetLoggerTest()
 {
 	std::shared_ptr<spdlog::logger> logger = nullptr;
 
@@ -73,11 +78,18 @@ static std::shared_ptr<spdlog::logger> GetLogger()
 	return logger;
 }
 
+static std::shared_ptr<spdlog::logger> GetLoggerFromConfig()
+{
+	spdlog_setup::from_file("SingletonLog.config");
+
+	return spdlog::get("root");
+}
+
 static std::shared_ptr<spdlog::logger> GetAndInitLogger()
 {
-	std::shared_ptr<spdlog::logger> mainLog = GetLogger();
+	std::shared_ptr<spdlog::logger> mainLog = GetLoggerFromConfig();
 
-	mainLog->info("Welcome to spdlog version {}.{}.{}  !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
+	mainLog->info("Welcome to SingletonLog base on spdlog version {}.{}.{}  !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
 
 	return mainLog;
 }
